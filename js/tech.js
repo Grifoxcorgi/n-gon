@@ -6127,9 +6127,9 @@ const tech = {
     },
     {
         name: "MIRV",
-        description: "fire <strong>+1</strong> <strong>missile</strong> or <strong>grenade</strong> per shot<br><strong>0.88x</strong> <strong class='color-e'>explosion</strong> <strong class='color-d'>damage</strong> and <strong>radius</strong>",
+        description: "fire <strong>+4</strong> <strong>missile</strong> or <strong>grenade</strong> per shot<br><strong>0.88x</strong> <strong class='color-e'>explosion</strong> <strong class='color-d'>damage</strong> and <strong>radius</strong>",
         isGunTech: true,
-        maxCount: 9,
+        maxCount: 49,
         count: 0,
         frequency: 2,
         frequencyDefault: 2,
@@ -6138,6 +6138,9 @@ const tech = {
         },
         requires: "missiles, grenades",
         effect() {
+            tech.missileCount++;
+            tech.missileCount++;
+            tech.missileCount++;
             tech.missileCount++;
         },
         remove() {
@@ -8738,7 +8741,7 @@ const tech = {
             }
         },
         isFieldTech: true,
-        maxCount: 3,
+        maxCount: 25,
         count: 0,
         frequency: 3,
         frequencyDefault: 3,
@@ -8747,7 +8750,7 @@ const tech = {
         },
         requires: "plasma torch",
         effect() {
-            tech.isPlasmaRange += 0.5;
+            tech.isPlasmaRange += 2.5;
             for (let i = 0; i < 1; i++) {
                 if (powerUps.research.count > 0) powerUps.research.changeRerolls(-1)
             }
