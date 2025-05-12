@@ -26,6 +26,7 @@ const b = {
             if (input.fire && m.fireCDcycle < m.cycle && (!input.field || m.fieldFire)) {
                 if (b.guns[b.activeGun].ammo > 0) {
                     b.fireWithAmmo()
+                    b.refundAmmo()
                 } else {
                     b.outOfAmmo()
                 }
