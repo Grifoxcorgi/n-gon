@@ -1291,22 +1291,22 @@ const tech = {
             if (this.count) currentRate = `<em style ="float: right;">(${(totalRate).toFixed(2)}x)</em>`
             return `randomly gain between <strong>1x</strong> and <strong>2x</strong> <em>fire rate</em><br><strong>+5%</strong> chance for <strong class='color-junk'>JUNK</strong> <strong class='color-choice'><span>ch</span><span>oi</span><span>ces</span></strong>` + currentRate
         },
-        maxCount: 9,
+        maxCount: 99,
         count: 0,
-        frequency: 1,
-        frequencyDefault: 1,
+        frequency: 3,
+        frequencyDefault: 3,
         allowed() {
             return tech.junkChance < 1
         },
         requires: "",
         totalRate: [], //tracks the random damage upgrades so it can be removed and in descriptionFunction
         effect() {
-            const rate = (Math.floor((Math.random() + 1) * 100)) / 100
+            const rate = (Math.floor((Math.random() + 3) * 100)) / 100
             tech.fireRate /= rate * 5
             this.totalRate.push(rate)
             b.setFireCD();
             simulation.inGameConsole(`<span class='color-var'>tech</span>.fireRate *= ${rate * 5} //heuristics`);
-            this.refundAmount += tech.addJunkTechToPool(0.05)
+            this.refundAmount += tech.addJunkTechToPool(0.01)
         },
         refundAmount: 0,
         remove() {
