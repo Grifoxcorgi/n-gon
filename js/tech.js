@@ -2070,7 +2070,7 @@ const tech = {
                 if (bullet[i].botType === 'orbit') {
                     bullet[i].isUpgraded = true
                     bullet[i].range = range
-                    bullet[i].orbitalSpeed = Math.sqrt(0.25 / range)
+                    bullet[i].orbitalSpeed = Math.sqrt(0.25 / range) * 10
                 }
             }
             tech.setBotTechFrequency()
@@ -7759,9 +7759,9 @@ const tech = {
     },
     {
         name: "diffraction grating",
-        description: `<strong>+1</strong> diverging <strong class='color-laser'>laser</strong> beam`,
+        description: `<strong>+3</strong> diverging <strong class='color-laser'>laser</strong> beam`,
         isGunTech: true,
-        maxCount: 9,
+        maxCount: 25,
         count: 0,
         frequency: 1,
         frequencyDefault: 1,
@@ -7770,6 +7770,8 @@ const tech = {
         },
         requires: "laser gun, not diffuse beam, slow light",
         effect() {
+            tech.beamSplitter++
+            tech.beamSplitter++
             tech.beamSplitter++
             b.guns[11].chooseFireMethod()
         },
@@ -7856,7 +7858,7 @@ const tech = {
     },
     {
         name: "delayed-choice",
-        description: "your <strong class='color-laser'>laser</strong> fires a <strong>0.4</strong> second <strong>delayed</strong> beam<br>that does <strong>0.7x</strong> <strong class='color-d'>damage</strong>",
+        description: "your <strong class='color-laser'>laser</strong> fires 3 <strong>0.4</strong> second <strong>delayed</strong> beam<br>that does <strong>0.7x</strong> <strong class='color-d'>damage</strong>",
         isGunTech: true,
         maxCount: 9,
         count: 0,
@@ -7867,6 +7869,8 @@ const tech = {
         },
         requires: "laser gun, not diffraction grating, diffuse beam",
         effect() {
+            tech.historyLaser++
+            tech.historyLaser++
             tech.historyLaser++
             b.guns[11].chooseFireMethod()
         },
