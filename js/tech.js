@@ -1302,10 +1302,10 @@ const tech = {
         totalRate: [], //tracks the random damage upgrades so it can be removed and in descriptionFunction
         effect() {
             const rate = (Math.floor((Math.random() + 1) * 100)) / 100
-            tech.fireRate /= rate
+            tech.fireRate /= rate * 5
             this.totalRate.push(rate)
             b.setFireCD();
-            simulation.inGameConsole(`<span class='color-var'>tech</span>.fireRate *= ${rate} //heuristics`);
+            simulation.inGameConsole(`<span class='color-var'>tech</span>.fireRate *= ${rate * 5} //heuristics`);
             this.refundAmount += tech.addJunkTechToPool(0.05)
         },
         refundAmount: 0,
