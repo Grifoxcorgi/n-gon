@@ -6415,7 +6415,7 @@ const b = {
             fireCycle: 0,
             do() { },
             fire() {
-                const countReduction = Math.pow(0.86, tech.missileCount)
+                const countReduction = Math.pow(0.86, 1)
                 // if (m.crouch) {
                 //     m.fireCDcycle = m.cycle + tech.missileFireCD * b.fireCDscale / countReduction; // cool down
                 //     // for (let i = 0; i < tech.missileCount; i++) {
@@ -6446,7 +6446,7 @@ const b = {
                 //     y: m.pos.y + 30 * direction.y
                 // }
                 if (tech.missileCount > 1) {
-                    const push = Vector.mult(Vector.perp(direction), 0.2 * countReduction / Math.sqrt(tech.missileCount))
+                    const push = Vector.mult(Vector.perp(direction), 0.2 * countReduction / Math.sqrt(1))
                     const sqrtCountReduction = Math.sqrt(countReduction)
                     // for (let i = 0; i < tech.missileCount; i++) {
                     //     setTimeout(() => {
@@ -6508,7 +6508,7 @@ const b = {
             have: false,
             do() { }, //do is set in b.setGrenadeMode()
             fire() {
-                const countReduction = Math.pow(0.93, tech.missileCount)
+                const countReduction = Math.pow(0.93, 1)
                 m.fireCDcycle = m.cycle + Math.floor((m.crouch ? 35 : 27) * b.fireCDscale / countReduction); // cool down
                 const where = {
                     x: m.pos.x + 30 * Math.cos(m.angle),
