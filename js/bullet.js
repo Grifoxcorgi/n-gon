@@ -5717,7 +5717,7 @@ const b = {
                         player.force.x += 1.5 * knock * Math.cos(m.angle)
                         player.force.y += 1.5 * knock * Math.sin(m.angle) - 3 * player.mass * simulation.g
                     } else if (tech.isShotgunRecoil) {
-                        m.fireCDcycle -= 0.66 * (56 * b.fireCDscale)
+                        m.fireCDcycle -= 0.33 * (56 * b.fireCDscale)
                         player.force.x -= 2 * knock * Math.cos(m.angle)
                         player.force.y -= 2 * knock * Math.sin(m.angle)
                     } else {
