@@ -5590,7 +5590,7 @@ const tech = {
     },
     {
         name: "super duper",
-        description: `randomly fire <strong>+0</strong>, <strong>+1</strong>, <strong>+2</strong>, or <strong>+3</strong> extra <strong>super balls</strong>`,
+        description: `randomly fire <strong>+0</strong>, <strong>+1</strong>, <strong>+2</strong>, or <strong>+3</strong> or more extra <strong>super balls</strong>`,
         isGunTech: true,
         maxCount: 9,
         count: 0,
@@ -5601,7 +5601,7 @@ const tech = {
         },
         requires: "super balls, not super ball",
         effect() {
-            tech.extraSuperBalls += 4
+            tech.extraSuperBalls += 9
         },
         remove() {
             tech.extraSuperBalls = 0;
