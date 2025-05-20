@@ -7455,12 +7455,12 @@ const tech = {
     {
         name: "smelting",
         descriptionFunction() {
-            return `forge <strong>${this.removeAmmo()}</strong> <strong class='color-ammo'>ammo</strong> into a new ${b.guns[9].harpoonName()}<br>fire <strong>+1</strong> ${b.guns[9].harpoonName()} with each shot`
+            return `forge <strong>${this.removeAmmo()}</strong> <strong class='color-ammo'>ammo</strong> into a new ${b.guns[9].harpoonName()}<br>fire <strong>+5</strong> ${b.guns[9].harpoonName()} with each shot`
         },
         isGunTech: true,
-        maxCount: 9,
+        maxCount: 25,
         count: 0,
-        frequency: 2,
+        frequency: 8,
         frequencyDefault: 2,
         ammoRemoved: 0,
         removeAmmo() {
@@ -7478,6 +7478,10 @@ const tech = {
                     b.guns[i].ammo -= removeAmmo
                     if (b.guns[i].ammo < 0) b.guns[i].ammo = 0
                     simulation.updateGunHUD();
+                    tech.extraHarpoons++;
+                    tech.extraHarpoons++;
+                    tech.extraHarpoons++;
+                    tech.extraHarpoons++;
                     tech.extraHarpoons++;
                     break
                 }
