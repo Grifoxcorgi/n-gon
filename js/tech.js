@@ -1005,7 +1005,7 @@ const tech = {
         name: "marginal utility",
         descriptionFunction() {
             if (this.count === 0) this.gun = Math.floor(Math.random() * (b.guns.length - 1)) //don't pick laser
-            return `<strong>2x</strong> <strong class='color-ammo'>ammo</strong> per ${powerUps.orb.ammo(1)} for <strong class='color-g'>${b.guns[this.gun].name}</strong>`
+            return `<strong>10x</strong> <strong class='color-ammo'>ammo</strong> per ${powerUps.orb.ammo(1)} for <strong class='color-g'>${b.guns[this.gun].name}</strong>`
         },
         maxCount: 1,
         count: 0,
@@ -1018,7 +1018,7 @@ const tech = {
             if (this.gun === undefined) this.gun = Math.floor(Math.random() * (b.guns.length - 1)) //don't pick laser
 
             simulation.inGameConsole(`${b.guns[this.gun].ammoPack} → ${2 * b.guns[this.gun].ammoPack} average <strong class='color-ammo'>ammo</strong> per ${powerUps.orb.ammo(1)} for <strong class='color-g'>${b.guns[this.gun].name}</strong>`)
-            b.guns[this.gun].ammoPack *= 2
+            b.guns[this.gun].ammoPack *= 10
             // simulation.inGameConsole(`${(tech.interestRate * 100).toFixed(0)}<span class='color-symbol'>%</span> <span class='color-m'>interest</span> on <span class='color-h'>health</span> <span class='color-symbol'>=</span> ${h > 20 ? h + powerUps.orb.heal(1) : powerUps.orb.heal(h)}`)
 
             // for (let i = 0; i < 4; i++) powerUps.spawn(m.pos.x + 10 * Math.random(), m.pos.y + 10 * Math.random(), "ammo");
@@ -4231,7 +4231,7 @@ const tech = {
     {
         name: "field coupling",
         descriptionFunction() {
-            return `spawn ${powerUps.orb.coupling(10)}<br><em>${m.couplingDescription(1)} per ${powerUps.orb.coupling(1)}</em>`
+            return `spawn ${powerUps.orb.coupling(100)}<br><em>${m.couplingDescription(1)} per ${powerUps.orb.coupling(1)}</em>`
         },
         maxCount: 9,
         count: 0,
@@ -4243,7 +4243,7 @@ const tech = {
         },
         requires: "",
         effect() {
-            powerUps.spawnDelay("coupling", 10)
+            powerUps.spawnDelay("coupling", 100)
         },
         remove() {
             // if (this.count) m.couplingChange(-this.count * 10)
@@ -5109,18 +5109,18 @@ const tech = {
     },
     {
         name: "gauge",
-        description: `<strong>rivets</strong>, <strong>needles</strong>, <strong>super balls</strong>, and <strong>nails</strong><br>have <strong>1.3x</strong> mass and physical <strong class='color-d'>damage</strong>`,
+        description: `<strong>rivets</strong>, <strong>needles</strong>, <strong>super balls</strong>, and <strong>nails</strong><br>have <strong>more than 1.3x</strong> mass and physical <strong class='color-d'>damage</strong>`,
         isGunTech: true,
-        maxCount: 9,
+        maxCount: 25,
         count: 0,
-        frequency: 2,
-        frequencyDefault: 2,
+        frequency: 5,
+        frequencyDefault: 5,
         allowed() {
             return tech.hookNails + tech.isMineDrop + tech.isNailBotUpgrade + tech.fragments + tech.nailsDeathMob + (tech.haveGunCheck("super balls") + (tech.haveGunCheck("mine") && !tech.isFoamMine) + (tech.haveGunCheck("nail gun")) + tech.isNeedles + tech.isNailShot + tech.isRivets) * 2 > 1
         },
         requires: "nails, nail gun, rivets, shotgun, super balls, mine",
         effect() {
-            tech.bulletSize = 1 + 0.25 * Math.pow(this.count + 1, 0.5)
+            tech.bulletSize = 1 + 2.5 * Math.pow(this.count + 1, 0.5)
         },
         remove() {
             tech.bulletSize = 1;
@@ -5843,7 +5843,7 @@ const tech = {
     {
         name: "missile-bot",
         link: `<a target="_blank" href='https://en.wikipedia.org/wiki/Robot' class="link">missile-bot</a>`,
-        description: `use ${powerUps.orb.research(1)}to trade your <strong>missile</strong> ${powerUps.orb.gun()}<br>for a <strong class='color-bot'>bot</strong> that fires <strong>missiles</strong>`,
+        description: `use ${powerUps.orb.research(1)}to trade your <strong>missile</strong> ${powerUps.orb.gun()}<br>for 5 <strong class='color-bot'>bots</strong> that fires <strong>missiles</strong>`,
         // isGunTech: true,
         isRemoveGun: true,
         maxCount: 1,
@@ -5858,6 +5858,10 @@ const tech = {
         },
         requires: "missiles, not launch system",
         effect() {
+            tech.missileBotCount++;
+            tech.missileBotCount++;
+            tech.missileBotCount++;
+            tech.missileBotCount++;
             tech.missileBotCount++;
             b.missileBot();
             if (tech.haveGunCheck("missiles", false)) b.removeGun("missiles") //remove your last gun
